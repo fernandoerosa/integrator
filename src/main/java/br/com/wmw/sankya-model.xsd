@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="sankya-city">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="serviceName" type="xs:string"/>
+        <xs:element name="status" type="xs:string"/>
+        <xs:element name="pendingPrinting" type="xs:string"/>
+        <xs:element name="transactionId" type="xs:string"/>
+        <xs:element name="responseBody">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="entities">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="total" type="xs:string"/>
+                    <xs:element name="hasMoreResult" type="xs:string"/>
+                    <xs:element name="offsetPage" type="xs:string"/>
+                    <xs:element name="offset" type="xs:string"/>
+                    <xs:element name="metadata">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="fields" maxOccurs="unbounded">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="field">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element name="name" type="xs:string"/>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="entity" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="f0">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="%" type="xs:string"/>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element name="f1">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="%" type="xs:string"/>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element name="f2">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="%" type="xs:string"/>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element name="f3">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="%" type="xs:string"/>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+</xs:schema>

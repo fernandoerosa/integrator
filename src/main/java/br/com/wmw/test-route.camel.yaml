@@ -1,0 +1,89 @@
+- route:
+    id: Integração Sankya
+    from:
+      id: from-4046
+      uri: timer
+      parameters:
+        timerName: timer
+      steps:
+        - setHeaders:
+            id: setHeaders-1390
+            headers:
+              - constant:
+                  expression: Wmwskw@!
+                name: password
+              - constant:
+                  expression: 4284ed26-c0f5-440a-8ebc-b7a635458caa
+                name: token
+              - constant:
+                  expression: sankhyaom@wmw.com.br
+                name: username
+              - constant:
+                  expression: 9b483254-a617-40a6-aee6-dbc9bd81058d
+                name: appkey
+        - to:
+            id: to-sankya
+            uri: http
+            parameters:
+              httpMethod: POST
+              httpUri: https://api.sandbox.sankhya.com.br/login?bridgeEndpoint=true
+        - unmarshal:
+            id: unmarshal-2654
+            json: {}
+        - setHeader:
+            id: setHeader-3299
+            java:
+              expression: '"Bearer " +
+                exchange.getMessage().getBody(Map.class).get("bearerToken");'
+            name: Authorization
+        - setBody:
+            id: setBody-1442
+            simple:
+              expression: |-
+                {
+                    "serviceName": "CRUDServiceProvider.loadRecords",
+                    "requestBody": {
+                    "dataSet": {
+                        "rootEntity": "Cidade",
+                        "includePresentationFields": "S",
+                        "offsetPage": "0",
+                        "criteria": {
+                        "expression": {
+
+                        },
+                        "parameter":[
+                            {
+                                "type":"I",
+                                "value":"490"
+                            }
+                        ]
+                        },
+                        "entity": {
+                        "fieldset": {
+                                "list": "CODCID,NOMECID,UF"
+                                }
+                            }
+                        }
+                    }
+                }
+        - to:
+            id: to-1681
+            uri: http
+            parameters:
+              httpMethod: POST
+              httpUri: https://api.sandbox.sankhya.com.br/gateway/v1/mge/service.sbr?serviceName=CRUDServiceProvider.loadRecords&outputType=json
+              useSystemProperties: false
+        - setBody:
+            id: setBody-4056
+            java:
+              expression: exchange.getMessage().getBody(String.class).replace("$", "%");
+        - to:
+            id: to-1658
+            uri: jolt
+            parameters:
+              inputType: JsonString
+              outputType: JsonString
+              resourceUri: file:jolt-spec-parse.json
+        - log:
+            id: log-3337
+            message: ${body}

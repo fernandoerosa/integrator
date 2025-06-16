@@ -1,0 +1,22 @@
+- route:
+    id: route-4093
+    from:
+      uri: timer:yaml
+      parameters:
+        period: "1000"
+      steps:
+        - to:
+            id: to-7737
+            uri: kamelet:sqlserver-sink
+            parameters:
+              databaseName: JAHUUPWEBPRD21102024
+              password: db97!#!!
+              query: >-
+                SELECT CDBANCO, NMBANCO, CDIDENTIFICACAOBANCO, IMBANCO,
+                FLTIPOALTERACAO, FLATIVO
+
+                FROM JAHUUPWEBPRD21102024.dbo.TBUPBANCO;
+              serverName: localhost
+              trustServerCertificate: false
+              username: sa
+        - log: ${body}

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="City">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Name" type="xs:string"/>
+        <xs:element name="Country" type="xs:string"/>
+        <xs:element name="Population" type="xs:integer" minOccurs="0"/>
+        <xs:element name="Area" type="xs:decimal" minOccurs="0"/>
+        <xs:element name="Founded" type="xs:gYear" minOccurs="0"/>
+        <xs:element name="Mayor" type="PersonType" minOccurs="0"/>
+        <xs:element name="Districts" minOccurs="0">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="District" type="DistrictType" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Landmarks" minOccurs="0">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Landmark" type="LandmarkType" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:complexType name="DistrictType">
+    <xs:sequence>
+      <xs:element name="Name" type="xs:string"/>
+      <xs:element name="Population" type="xs:integer" minOccurs="0"/>
+      <xs:element name="Area" type="xs:decimal" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="LandmarkType">
+    <xs:sequence>
+      <xs:element name="Name" type="xs:string"/>
+      <xs:element name="Type" type="LandmarkCategory"/>
+      <xs:element name="Location" type="xs:string" minOccurs="0"/>
+      <xs:element name="Built" type="xs:gYear" minOccurs="0"/>
+      <xs:element name="Description" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="PersonType">
+    <xs:sequence>
+      <xs:element name="FirstName" type="xs:string"/>
+      <xs:element name="LastName" type="xs:string"/>
+      <xs:element name="BirthDate" type="xs:date" minOccurs="0"/>
+      <xs:element name="Party" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:simpleType name="LandmarkCategory">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Historical"/>
+      <xs:enumeration value="Religious"/>
+      <xs:enumeration value="Cultural"/>
+      <xs:enumeration value="Natural"/>
+      <xs:enumeration value="Modern"/>
+      <xs:enumeration value="Entertainment"/>
+      <xs:enumeration value="Other"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+</xs:schema>

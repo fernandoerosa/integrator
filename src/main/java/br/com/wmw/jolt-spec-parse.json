@@ -1,0 +1,19 @@
+[
+  {
+    "operation": "shift",
+    "spec": {
+      "responseBody": {
+        "entities": {
+          "entity": {
+            "*": {
+              "@.f0.%": "city[#2].id",
+              "@.f1.%": "city[#2].name",
+              "@.f2.%": "city[#2].uf_code",
+              "@.f3.%": "city[#2].uf"
+            }
+          }
+        }
+      }
+    }
+  }
+]

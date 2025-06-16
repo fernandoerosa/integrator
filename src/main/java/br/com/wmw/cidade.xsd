@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="Cidade">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Nome" type="xs:string"/>
+        <xs:element name="País" type="xs:string"/>
+        <xs:element name="População" type="xs:integer" minOccurs="0"/>
+        <xs:element name="Área" type="xs:decimal" minOccurs="0"/>
+        <xs:element name="Fundação" type="xs:gYear" minOccurs="0"/>
+        <xs:element name="Prefeito" type="TipoPessoa" minOccurs="0"/>
+        <xs:element name="Distritos" minOccurs="0">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Distrito" type="TipoDistrito" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="PontosTuristicos" minOccurs="0">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="PontoTuristico" type="TipoPontoTuristico" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:complexType name="TipoDistrito">
+    <xs:sequence>
+      <xs:element name="Nome" type="xs:string"/>
+      <xs:element name="População" type="xs:integer" minOccurs="0"/>
+      <xs:element name="Área" type="xs:decimal" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="TipoPontoTuristico">
+    <xs:sequence>
+      <xs:element name="Nome" type="xs:string"/>
+      <xs:element name="Tipo" type="CategoriaPontoTuristico"/>
+      <xs:element name="Localização" type="xs:string" minOccurs="0"/>
+      <xs:element name="Construção" type="xs:gYear" minOccurs="0"/>
+      <xs:element name="Descrição" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="TipoPessoa">
+    <xs:sequence>
+      <xs:element name="PrimeiroNome" type="xs:string"/>
+      <xs:element name="Sobrenome" type="xs:string"/>
+      <xs:element name="DataNascimento" type="xs:date" minOccurs="0"/>
+      <xs:element name="Partido" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:simpleType name="CategoriaPontoTuristico">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Histórico"/>
+      <xs:enumeration value="Religioso"/>
+      <xs:enumeration value="Cultural"/>
+      <xs:enumeration value="Natural"/>
+      <xs:enumeration value="Moderno"/>
+      <xs:enumeration value="Entretenimento"/>
+      <xs:enumeration value="Outro"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+</xs:schema>

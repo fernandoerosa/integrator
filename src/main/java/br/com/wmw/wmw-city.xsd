@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="TBUPCIDADE" maxOccurs="unbounded">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="CDESTADO" type="xs:string" />
+        <xs:element name="CDCIDADE" type="xs:string" />
+        <xs:element name="NMCIDADE" type="xs:string" minOccurs="0" />
+        <xs:element name="FLTIPOALTERACAO" type="xs:string" minOccurs="0" />
+        <xs:element name="FLATIVO" type="xs:string" minOccurs="0" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

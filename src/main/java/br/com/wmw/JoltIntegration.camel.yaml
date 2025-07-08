@@ -1,0 +1,16 @@
+- route:
+    id: route-2973
+    from:
+      id: from-3078
+      uri: rest
+      parameters:
+        method: post
+        path: /parse-data
+      steps:
+        - to:
+            id: to-3157
+            uri: jolt
+            parameters:
+              inputType: JsonString
+              outputType: JsonString
+              resourceUri: file:jolt-spec-parse.json

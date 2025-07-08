@@ -1,0 +1,17 @@
+[
+  {
+    "operation": "shift",
+    "spec": {
+      "numero": "creatorSystemOrderVersion",
+      "itens": {
+        "*": {
+          "qtd": "items[#2].quantity",
+          "valor": "items[#2].unitPriceValue",
+          "produto": {
+            "cod": "items[#3].ean"
+          }
+        }
+      }
+    }
+  }
+]

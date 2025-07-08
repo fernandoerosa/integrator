@@ -27,6 +27,9 @@
             parameters:
               httpMethod: POST
               httpUri: https://api.sandbox.sankhya.com.br/login?bridgeEndpoint=true
+        - log:
+            id: log-2616
+            message: ${body}
         - unmarshal:
             id: unmarshal-2654
             json: {}
